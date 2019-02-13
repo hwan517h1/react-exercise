@@ -1,0 +1,11 @@
+.button {
+  background: #fff;
+  border: 3px solid #999;
+}
+
+.contentBox {
+  height: 200px;
+  width: 400px;
+  background: #fff;
+  border: 3px solid #999;
+}

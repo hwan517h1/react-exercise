@@ -1,0 +1,24 @@
+# parceljs
+.cache/
+dist/
+
+# node.js
+node_modules/
+
+# Idea
+.idea/
+
+# vscode
+.vscode/
+
+# Eclipse
+
+# MacOS
+.DS_Store
+
+# logs
+logs/
+yarn-error.log
+
+# dotenv
+.env
