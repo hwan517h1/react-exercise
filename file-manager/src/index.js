@@ -2,47 +2,49 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.css';
 
-// function Preview(props) {
-//   const fileUrlList = props.fileUrlList
-//   var result
+function Preview(props) {
+  const { submitFiles } = props
+  let result = ''
 
-//   if(fileUrlList.length !== 0) {
-//     for(var i = 0; i < fileUrlList.length; i++) {
-//       result += "<img src='" + fileUrlList[i] + "'/>"
-//     }
-//   }
-
-//   return result
-// }
+  if(submitFiles.length !== 0) {
+    for(var i = 0; i < submitFiles.length; i++) {
+      result += "(" + (i + 1) + ") " + submitFiles[i].name + ","
+    }
+  }
+  
+  return result
+}
 
 export class FileManager extends React.Component {
   state = {
     files: [],
     fileUrls: [],
+    submitFiles: [],
   }
 
   saveFiles(file) {
     let fileReader = new FileReader()
-    var fileUrl
+    let fileUrl
+
+    fileReader.readAsDataURL(file)
     
     fileReader.onloadend = () => {
       fileUrl = fileReader.result
-      console.log("fileUrl: " + fileUrl)
 
       this.state.files.push(file)
       this.state.fileUrls.push(fileUrl)
     }
-
-    fileReader.readAsDataURL(file)
   }
 
-  handleSubmit = (e) => {
-    var files = this.state.files
-    console.log(files)
-
+  handleSubmit = () => {
+    const files = this.state.files
     for(var i = 0; i < files.length; i++) {
-      console.log("Submit File #" + (i + 1) + ": " + files[i])    
+      console.log("Submit File #" + (i + 1) + ": " + files[i].name)    
     }
+
+    this.setState({
+      submitFiles: files
+    })
   }
 
   handleChange = (e) => {
@@ -50,16 +52,13 @@ export class FileManager extends React.Component {
 
     // 파일 리스트인 files는 length 속성을 지니고 있으며 item()을 통해서 파일 객체를 반환함
     for(var i = 0; i < files.length; i++) {
-      console.log("File #" + (i + 1) + ": " + files[i])
+      console.log("File #" + (i + 1) + ": ")
+      console.log(files[i])
     
       this.saveFiles(files.item(i))
     }
 
-    this.setState({
-      files: this.state.files,
-      fileUrls: this.state.fileUrls,
-    })
-
+    console.log("fileUrls:")
     console.log(this.state.fileUrls)
   }
 
@@ -76,9 +75,9 @@ export class FileManager extends React.Component {
         <div>
             <h3>List of Files</h3>
             <div className='fileList'>
-              {/* <Preview 
-                fileUrlList={this.state.fileUrls}
-              /> */}
+              <Preview 
+                submitFiles={this.state.submitFiles}
+              />
             </div>
         </div>
       </div>
