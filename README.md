@@ -1,4 +1,5 @@
 # react-exercise
 
-- React exercise for Memo widget
-- React exercise for File-send widget
+- Memo widget
+- File-send widget
+- [React Hooks Tutorial](https://velog.io/@velopert/react-hooks)
