@@ -1,6 +1,5 @@
-# parceljs
-.cache/
-dist/
+# next.js
+.next/
 
 # node.js
 node_modules/
@@ -11,8 +10,6 @@ node_modules/
 # vscode
 .vscode/
 
-# Eclipse
-
 # MacOS
 .DS_Store
 
@@ -20,5 +17,5 @@ node_modules/
 logs/
 yarn-error.log
 
-# dotenv
+# env
 .env
