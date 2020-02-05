@@ -1,0 +1,16 @@
+# node.js
+node_modules/
+
+# next.js
+.next/
+
+# vscode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# logs
+logs/
+yarn-error.log
+
